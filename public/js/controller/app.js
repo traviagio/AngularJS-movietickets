@@ -1,7 +1,7 @@
 window.movieStubApp = angular.module('movieStubApp', []);
-
+ 
 movieStubApp.controller("movieStubController", function ($scope) {
-    $scope.movies = [
+   $scope.movies = [
         {
             "id": 0,
             "name": "Iron Man",
@@ -27,4 +27,15 @@ movieStubApp.controller("movieStubController", function ($scope) {
             "thumb": "http://upload.wikimedia.org/wikipedia/en/6/66/Transformers07.jpg"
         }
     ];
+ 
+    $scope.currMovie = null;
+    $scope.getMovieById = function (id) {
+        var movies = $scope.movies;
+        for (var i = 0; i < movies.length; i++) {
+            var movie = $scope.movies[i];
+            if (movie.id == id) {
+                $scope.currMovie = movie;
+            }
+        }
+    };
 });
