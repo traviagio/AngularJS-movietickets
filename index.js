@@ -3,12 +3,12 @@ var express = require("express"),
     port = process.env.PORT || 2595;
  
 var app = express();
-app.use(express.logger());
-app.use(express.json());
-app.use(express.urlencoded());
-app.set("view options", {
-    layout: false
-});
+// app.use(express.logger());
+// app.use(express.json());
+// app.use(express.urlencoded());
+// app.set("view options", {
+//     layout: false
+// });
 app.use(express.static(__dirname + '/public'));
  
 app.get('/', function (req, res) {

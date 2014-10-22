@@ -1,14 +1,15 @@
-window.movieStubApp = angular.module('movieStubApp', []);
- 
+window.movieStubApp = angular.module('movieStubApp', ['ngRoute']);
+
 movieStubApp.controller("movieStubController", function ($scope) {
-   $scope.movies = [
+    $scope.headerSrc = "tmpl/header.html";
+    $scope.movies = [
         {
             "id": 0,
-            "name": "Iron Man",
+            "name": "Dominican Republic",
             "rating": 5,
             "availability": 9,
             "review": "Tony Stark is a billionaire industrialist and genius inventor who is kidnapped and forced to build a devastating weapon. Instead, using his intelligence and ingenuity, Tony builds a high-tech suit of armor and escapes captivity. When he uncovers a nefarious plot with global implications, he dons his powerful armor and vows to protect the world as Iron Man. (Paramount Pictures, Marvel Studios)",
-            "thumb": "http://upload.wikimedia.org/wikipedia/en/e/e0/Iron_Man_bleeding_edge.jpg"
+            "thumb": "http://www.languatics.com/assets/Uploads/Languatics-Language-Immersion-Learn-Italian-Cagliari-Italy-1.jpg"
         },
         {
             "id": 1,
@@ -27,7 +28,7 @@ movieStubApp.controller("movieStubController", function ($scope) {
             "thumb": "http://upload.wikimedia.org/wikipedia/en/6/66/Transformers07.jpg"
         }
     ];
- 
+
     $scope.currMovie = null;
     $scope.getMovieById = function (id) {
         var movies = $scope.movies;
@@ -38,4 +39,14 @@ movieStubApp.controller("movieStubController", function ($scope) {
             }
         }
     };
+    // A simple back function, that will help us navigate between views
+    $scope.back = function () {
+        window.history.back();
+    };
+    $scope.getCount = function (n) {
+        return new Array(n);
+    };
+});
+movieStubApp.controller("movieDetailsController", function ($scope, $routeParams) {
+    $scope.getMovieById($routeParams.id);
 });

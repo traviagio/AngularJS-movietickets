@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "express": "^4.9.7"
+  },
+  "dependencies": {
+    "express-logger": "0.0.3"
   }
 }
