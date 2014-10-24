@@ -12,6 +12,7 @@
     "express": "^4.9.7"
   },
   "dependencies": {
+    "express-json": "^1.0.0",
     "express-logger": "0.0.3"
   }
 }
