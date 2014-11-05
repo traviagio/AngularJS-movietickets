@@ -1,5 +1,28 @@
 window.movieStubApp = angular.module('movieStubApp', ['ngRoute', 'ngResource']);
+
+movieStubApp.controller("bookTicketsController", function ($scope, $http, $location, $routeParams) {
+    $scope.getMovieById($routeParams.id);
+    $scope.onlyNumbers = /^\d+$/;
+    $scope.formData = {};
+    $scope.formData.movie_id = $scope.currMovie.id;
+    $scope.formData.movie_name = $scope.currMovie.name;
+    $scope.formData.date = "Today"
  
+    $scope.processForm = function () {
+        $http({
+            method: 'POST',
+            url: '/book',
+            data: $.param($scope.formData), // pass in data as strings
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            } // set the headers so angular passing info as form data (not request payload)
+        })
+            .success(function (data) {
+                console.log(data);
+            });
+    };
+});
+
 movieStubApp.controller("movieStubController", function ($scope, movieStubFactory) {
     $scope.headerSrc = "tmpl/header.html";
     $scope.movies = movieStubFactory.query();
